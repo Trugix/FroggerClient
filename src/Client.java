@@ -12,7 +12,9 @@ public class Client {
     private int porta = 1234;
     private ObjectInputStream in;
     private ObjectOutputStream out;
-    private FroggerModel ServerModel;
+    private Transfer statoServer;
+
+    private FroggerModel serverModel = new FroggerModel(0);
     private PnlFrog serverView;
     private boolean first = true;
     private JFrame serverFrame;
@@ -29,10 +31,11 @@ public class Client {
         public void run() {
             while(true) {
                 try {
-                    ServerModel = (FroggerModel) in.readObject();
+                    statoServer = (Transfer) in.readObject();
+                    serverModel.transferToModel(statoServer);
                     if (first)
                     {
-                        serverView = new PnlFrog(ServerModel);
+                        serverView = new PnlFrog(serverModel);
                         first = false;
                     }
                     serverView.repaint();
@@ -83,8 +86,9 @@ public class Client {
         serverFrame.setVisible(true);
     }
 
-    public void send(FroggerModel model) throws IOException {
-        out.writeObject(model);
+    public void send() throws IOException {
+        Transfer statoCorrente = ctrl.modelToTransfer(ctrl.model);
+        out.writeObject(statoCorrente);
         out.reset();
     }
 }

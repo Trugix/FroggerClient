@@ -21,6 +21,16 @@ public class FroggerModel implements Serializable
 	public ArrayList<Skull> skulls = new ArrayList<>();
 	
 	public int tempo = 500;
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	public int points = 0;
 	
 	public BufferedImage[] spritesFrog = {ImageIO.read(new File(PATH_SPRITE + "frogUp.png")), ImageIO.read(new File(PATH_SPRITE + "frogRight.png")),
 			ImageIO.read(new File(PATH_SPRITE + "frogDown.png")), ImageIO.read(new File(PATH_SPRITE + "frogLeft.png"))};
@@ -90,7 +100,11 @@ public class FroggerModel implements Serializable
 	
 	private final Prize fly = new Prize(465, 1215, 0, "fly", 100, 100, true, 200);
 	
-	
+
+	public FroggerModel(int i) throws IOException
+	{
+
+	}
 	public FroggerModel() throws IOException
 	{
 		entities.add(frog);
@@ -172,5 +186,13 @@ public class FroggerModel implements Serializable
 			default -> {}
 		}
 		frog.updateHitbox();
+	}
+
+
+	public void transferToModel(Transfer transfer)
+	{
+		this.points =transfer.punteggio;
+		this.entities=transfer.entities;
+		this.tempo=transfer.time;
 	}
 }
