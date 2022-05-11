@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="transizione associa immagini con ID">
-      <change afterPath="$PROJECT_DIR$/src/Transfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FroggerCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FroggerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PnlFrog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PnlFrog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transfer.java" afterDir="false" />
     </list>
-    <list id="dc967c36-5138-4e8e-8dec-ca774b4195c5" name="Changes by Edoardo" comment="Changes by Edoardo">
-      <change beforePath="$PROJECT_DIR$/src/Frog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PnlFrog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PnlFrog.java" afterDir="false" />
-    </list>
+    <list id="dc967c36-5138-4e8e-8dec-ca774b4195c5" name="Changes by Edoardo" comment="Changes by Edoardo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,15 +19,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/PnlFrog.java">
-      <ranges>
-        <range start1="50" end1="51" start2="50" end2="51" changelist="dc967c36-5138-4e8e-8dec-ca774b4195c5" />
-        <range start1="148" end1="149" start2="148" end2="149" changelist="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" />
-        <range start1="226" end1="227" start2="226" end2="227" changelist="dc967c36-5138-4e8e-8dec-ca774b4195c5" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -82,7 +65,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652259209801</updated>
-      <workItem from="1652259211132" duration="10087000" />
+      <workItem from="1652259211132" duration="10577000" />
     </task>
     <task id="LOCAL-00001" summary="first client">
       <created>1652263118856</created>
@@ -112,7 +95,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652272472229</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="transizione associa immagini con ID">
+      <created>1652275440192</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1652275440192</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Changes by Edoardo">
+      <created>1652275450451</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1652275450451</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,8 +128,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first client" />
-    <MESSAGE value="Changes by Edoardo" />
     <MESSAGE value="transizione associa immagini con ID" />
-    <option name="LAST_COMMIT_MESSAGE" value="transizione associa immagini con ID" />
+    <MESSAGE value="Changes by Edoardo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by Edoardo" />
   </component>
 </project>

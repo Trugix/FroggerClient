@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Transfer
+public class Transfer implements Serializable
 {
     ArrayList<Entity> entities;
     int time;
