@@ -15,13 +15,8 @@ public class Turtle extends NPC
 	{
 		super(x, y, dx, spriteID, dimx, dimy, deathTouch);
 	}
-	
-	public void addSprites (BufferedImage r)
-	{
-		sprites.add(r);
-	}
-	
-	
+
+
 	/**
 	 * faccio immergere le tartarughe
 	 */
@@ -39,7 +34,7 @@ public class Turtle extends NPC
 			}
 			else
 			{
-				this.sprite = sprites.get(0);
+				this.spriteID = "turtle1";
 				deathTouch = false;
 				goDown=true;
 				timer=MAX_TIMER;
@@ -47,7 +42,7 @@ public class Turtle extends NPC
 		}
 		if(timer == 50)
 		{
-			this.sprite = sprites.get(1);
+			this.spriteID = "turtle2";
 			deathTouch = false;
 		}
 		

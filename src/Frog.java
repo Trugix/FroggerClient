@@ -34,7 +34,7 @@ public class Frog extends Entity {
 	private static final int STARTING_FROGY = 10;
 
 	
-	public Frog(int x, int y, int dx, BufferedImage[] sprites, BufferedImage[] spritesMov, int dimx, int dimy)
+	public Frog(int x, int y, int dx, String spriteID, int dimx, int dimy)
 	{
 		super(x, y, dx, spriteID, dimx, dimy);
 		vite=MAX_VITE;
@@ -112,25 +112,25 @@ public class Frog extends Entity {
 			switch (direction)
 			{
 				case 0:
-					sprite = spritesMove[0];
+					spriteID = "frogMovUp";
 					p.y+=20;
 					if (p.getY() > 1210)
 						p.setY(1210);
 					break;
 				case 1:
-					sprite = spritesMove[1];
+					spriteID = "frogMovRight";
 					p.x+=14;
 					if (p.getX() > 920)
 						p.setX(920);
 					break;
 				case 2:
-					sprite = spritesMove[2];
+					spriteID = "frogMovDown";
 					p.y-=20;
 					if (p.getY() < 10)
 						p.setY(10);
 					break;
 				case 3:
-					sprite = spritesMove[3];
+					spriteID = "frogMovLeft";
 					p.x-=14;
 					if (p.getX() < 0)
 						p.setX(0);

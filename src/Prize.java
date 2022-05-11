@@ -46,14 +46,7 @@ public class Prize extends Entity
 			}
 			else
 			{
-				try
-				{
-					setSprite(ImageIO.read(new File("src/../sprites/void.png")));
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}
+				setSprite("void");
 				this.hitbox = null;
 			}
 		}

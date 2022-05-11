@@ -65,14 +65,14 @@ public class FroggerModel implements Serializable
 	private final NPC carPoliceA = new NPC(684, 110, -10, "police", 110, 85, true);
 	private final NPC carPoliceB = new NPC(215, 110, -10, "police", 110, 85, true);
 	
-	private final NPC log6A = new NPC(1000, 1110, 11, spriteLog6, 595, 85, false);
-	private final NPC log6B = new NPC(100, 1110, 11, spriteLog6, 595, 85, false);
-	private final NPC log4A = new NPC(987, 810, 9, spriteLog4, 395, 85, false);
-	private final NPC log4B = new NPC(-144, 810, 9, spriteLog4, 395, 85, false);
-	private final NPC log4C = new NPC(394, 810, 9, spriteLog4, 395, 85, false);
-	private final NPC log3A = new NPC(-217, 910, 5, spriteLog3, 295, 85, false);
-	private final NPC log3B = new NPC(397, 910, 5, spriteLog3, 295, 85, false);
-	private final NPC log3C = new NPC(943, 910, 5, spriteLog3, 295, 85, false);
+	private final NPC log6A = new NPC(1000, 1110, 11, "log6", 595, 85, false);
+	private final NPC log6B = new NPC(100, 1110, 11, "log6", 595, 85, false);
+	private final NPC log4A = new NPC(987, 810, 9, "log4", 395, 85, false);
+	private final NPC log4B = new NPC(-144, 810, 9, "log4", 395, 85, false);
+	private final NPC log4C = new NPC(394, 810, 9, "log4", 395, 85, false);
+	private final NPC log3A = new NPC(-217, 910, 5, "log3", 295, 85, false);
+	private final NPC log3B = new NPC(397, 910, 5, "log3", 295, 85, false);
+	private final NPC log3C = new NPC(943, 910, 5, "log3", 295, 85, false);
 	
 	private final NPC turtleA = new Turtle(698, 710, -6, "turtle1", 110, 85, false);
 	private final Turtle turtleB = new Turtle(254, 710, -6, "turtle1", 110, 85, false);
@@ -124,18 +124,6 @@ public class FroggerModel implements Serializable
 		NPCs.add(turtleF);
 		turtles.add(turtleG);
 
-		turtleB.addSprites(spriteTurtle2);
-		turtleB.addSprites(spriteTurtle3);
-		turtleC.addSprites(spriteTurtle2);
-		turtleC.addSprites(spriteTurtle3);
-		turtleD.addSprites(spriteTurtle2);
-		turtleD.addSprites(spriteTurtle3);
-		turtleE.addSprites(spriteTurtle2);
-		turtleE.addSprites(spriteTurtle3);
-		turtleG.addSprites(spriteTurtle2);
-		turtleG.addSprites(spriteTurtle3);
-		
-		
 		prizes.add(lilyPadA);
 		prizes.add(lilyPadB);
 		prizes.add(lilyPadC);

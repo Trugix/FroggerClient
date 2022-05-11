@@ -3,6 +3,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Random;
@@ -220,7 +221,7 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 				{
 					if (p.isBonus())
 					{
-						p.setSprite(model.spriteFly);
+						p.setSprite("fly");
 					}
 				}
 			}
@@ -230,7 +231,7 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 				{
 					if (p.isBonus())
 					{
-						p.setSprite(model.spriteVoid);
+						p.setSprite("void");
 					}
 				}
 			}
@@ -324,7 +325,7 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 				}
 				else
 				{
-					p.setSprite(model.spriteFrogLily);
+					p.setSprite("lilyPadFrog");
 					p.setHitbox(null);
 					model.prizes.remove(p);
 				}
@@ -356,7 +357,7 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 
 		timerPrize = randTemp();
 		model.entities.add(precedente);
-		precedente.setSprite(model.spriteFrogLily);
+		precedente.setSprite("lilyPadFrog");
 		precedente.setHitbox(null);
 		
 		for (int i = 0; i < model.prizes.size(); i++)
@@ -473,4 +474,87 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 	public void mouseExited(MouseEvent e) {
 
 	}
+	public BufferedImage associaSprite (String spriteID)
+	{
+		switch (spriteID)
+		{
+			case "frogUp":
+				return model.spritesFrog[0];
+
+			case "frogRight":
+				return model.spritesFrog[1];
+
+			case "frogDown":
+				return model.spritesFrog[2];
+
+			case "frogLeft":
+				return model.spritesFrog[3];
+
+			case "frogMovUp":
+				return model.spritesFrogMov[0];
+
+			case "frogMovRight":
+				return model.spritesFrogMov[1];
+
+			case "frogMovDown":
+				return model.spritesFrogMov[2];
+
+			case "frogMovLeft":
+				return model.spritesFrogMov[3];
+
+			case "truck":
+				return model.spriteCarro;
+
+			case "bulldozer":
+				return model.spriteBulldozer;
+
+			case "autoSport":
+				return model.spriteAutoSport;
+
+			case "police":
+				return model.spritePolice;
+
+			case "formula1":
+				return model.spriteFormula1;
+
+			case "formula2":
+				return model.spriteFormula2;
+
+			case "log3":
+				return model.spriteLog3;
+
+			case "log4":
+				return model.spriteLog4;
+
+			case "log6":
+				return model.spriteLog6;
+
+			case "turtle1":
+				return model.spritesTurtle[0];
+
+			case "turtle2":
+				return model.spritesTurtle[1];
+
+			case "turtle3":
+				return model.spritesTurtle[2];
+
+			case "fly":
+				return model.spriteFly;
+
+			case "lilyPad":
+				return model.spriteLilyPad;
+
+			case "lilyPadFrog":
+				return model.spriteFrogLily;
+
+			case "skull":
+				return model.spriteSkull;
+
+			case "void":
+			default:
+				return model.spriteVoid;
+
+		}
+	}
+
 }
