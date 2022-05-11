@@ -48,8 +48,8 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 		frogView.addKeyListener(this);
 		frogView.addMouseListener(this);
 
-		client = new Client(this);
-		client.connessione();
+		//client = new Client(this);
+		//client.connessione();
 
 		if(PnlFrog.state == PnlFrog.STATE.GAME)
 			t.start();
@@ -150,7 +150,7 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 		
 		frogView.setEntities(model.entities);
 		frogView.repaint();
-		client.send(model);
+	//	client.send(model);
 		
 	}
 	
@@ -267,7 +267,7 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 	
 	private void updateMorte(Frog frog)
 	{
-		model.skulls.add(new Skull(frog.p.getX(), frog.p.getY(), 0, model.spriteSkull, 0, 0));
+		model.skulls.add(new Skull(frog.p.getX(), frog.p.getY(), 0, "skull", 0, 0));
 		if (frog.p.getY() > 700 && frog.p.getY() < 1200)
 		{
 			Sound.soundMorteAcqua();
@@ -410,11 +410,6 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 	private void resetTempo()
 	{
 		model.tempo = 500; //todo mettere costanti ovunque
-	}
-	
-	private void aggiornaPanelClient()
-	{
-		//client.setPanel(frogView);
 	}
 
 	@Override

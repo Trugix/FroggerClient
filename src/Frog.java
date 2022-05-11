@@ -22,10 +22,6 @@ public class Frog extends Entity {
 
 	private boolean isMoving=false;
 
-	private final BufferedImage[] spritesStill;
-
-	private final BufferedImage[] spritesMove;
-
 	public boolean isMoving() {
 		return isMoving;
 	}
@@ -34,17 +30,13 @@ public class Frog extends Entity {
 		isMoving = moving;
 	}
 
-
-
 	private static final int STARTING_FROGX = 460;
 	private static final int STARTING_FROGY = 10;
 
 	
 	public Frog(int x, int y, int dx, BufferedImage[] sprites, BufferedImage[] spritesMov, int dimx, int dimy)
 	{
-		super(x, y, dx, sprites[0], dimx, dimy);
-		this.spritesStill = sprites;
-		this.spritesMove = spritesMov;
+		super(x, y, dx, spriteID, dimx, dimy);
 		vite=MAX_VITE;
 	}
 	
@@ -65,7 +57,20 @@ public class Frog extends Entity {
 	
 	public void rotate(int targetDir)
 	{
-			this.sprite = spritesStill[targetDir];
+		switch (targetDir) {
+			case 0:
+				this.spriteID = "frogUp";
+				break;
+			case 1:
+				this.spriteID = "frogRight";
+				break;
+			case 2:
+				this.spriteID = "frogDown";
+				break;
+			case 3:
+				this.spriteID = "frogLeft";
+				break;
+		}
 	}
 	
 	

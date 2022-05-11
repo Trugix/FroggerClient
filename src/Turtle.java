@@ -10,12 +10,10 @@ public class Turtle extends NPC
 	private Random random = new Random();
 	private final int MAX_TIMER = random.nextInt(200)+150;
 	private int timer=MAX_TIMER;
-	private ArrayList <BufferedImage> sprites = new ArrayList<>();
 	
-	public Turtle(int x, int y, int dx, BufferedImage sprite, int dimx, int dimy, boolean deathTouch)
+	public Turtle(int x, int y, int dx, String spriteID, int dimx, int dimy, boolean deathTouch)
 	{
-		super(x, y, dx, sprite, dimx, dimy, deathTouch);
-		addSprites(sprite);
+		super(x, y, dx, spriteID, dimx, dimy, deathTouch);
 	}
 	
 	public void addSprites (BufferedImage r)
@@ -34,7 +32,7 @@ public class Turtle extends NPC
 		{
 			if(goDown)
 			{
-				this.sprite = sprites.get(2);
+				this.spriteID = "turtle3";
 				deathTouch = true;
 				goDown=false;
 				timer=MAX_TIMER;

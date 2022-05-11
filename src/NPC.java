@@ -5,8 +5,8 @@ public class NPC extends Entity {
 
 	
 	boolean deathTouch;
-	public NPC(int x, int y, int dx, BufferedImage sprite, int dimx, int dimy, boolean deathTouch) {
-		super(x, y, dx, sprite, dimx, dimy);
+	public NPC(int x, int y, int dx, String spriteID, int dimx, int dimy, boolean deathTouch) {
+		super(x, y, dx, spriteID, dimx, dimy);
 		this.deathTouch=deathTouch;
 		
 	}

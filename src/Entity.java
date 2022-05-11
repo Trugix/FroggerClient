@@ -48,7 +48,7 @@ public class Entity implements Serializable
 	}
 	
 	protected Position p;
-	protected BufferedImage sprite;
+	protected String spriteID;
 	protected int dx;
 	protected int dimx;
 	protected int dimy;
@@ -56,13 +56,13 @@ public class Entity implements Serializable
 	
 	public Entity () {}
 	
-	public Entity(int x, int y, int dx, BufferedImage sprite, int dimx, int dimy)
+	public Entity(int x, int y, int dx, String spriteID, int dimx, int dimy)
 	{
 		this.p = new Position(x, y);
 		this.dx = dx;
 		this.setDimx(dimx);
 		this.dimy = dimy;
-		this.sprite = sprite;
+		this.spriteID = spriteID;
 		this.hitbox = new Rectangle(x, y, dimx, dimy);
 	}
 	
@@ -71,9 +71,9 @@ public class Entity implements Serializable
 		this.hitbox = hitbox;
 	}
 	
-	public void setSprite(BufferedImage sprite)
+	public void setSprite(String spriteID)
 	{
-		this.sprite = sprite;
+		this.spriteID = spriteID;
 	}
 	
 	public void stepNext()
