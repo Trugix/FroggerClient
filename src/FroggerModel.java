@@ -195,4 +195,5 @@ public class FroggerModel implements Serializable
 		this.entities=transfer.entities;
 		this.tempo=transfer.time;
 	}
+
 }
