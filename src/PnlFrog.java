@@ -48,7 +48,7 @@ public class PnlFrog extends JPanel implements Serializable
 	
 	public static STATE state = STATE.MENU;
 
-	BufferedImage lilFrog = ImageIO.read(new File("src/../sprites/frogSmall.png"));
+	private BufferedImage lilFrog = ImageIO.read(new File("src/../sprites/frogSmall.png"));
 	
 	public void setEntities(ArrayList<Entity> entities)
 	{
@@ -224,7 +224,7 @@ public class PnlFrog extends JPanel implements Serializable
 		
 		printVite(g2, modelToDraw.frog.getVite());
 		printTempo(g2);
-		printPoint(g2, modelToDraw.frog.getPoint());
+		printPoint(g2, modelToDraw.getPoints());
 	}
 	
 	private void printVite(Graphics2D g2, int vite)
