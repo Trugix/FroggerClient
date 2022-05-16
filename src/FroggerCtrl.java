@@ -100,7 +100,6 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 		}
 
 
-
 		int size = model.NPCs.size();
 		ExecutorService service = Executors.newFixedThreadPool(4);
 		
@@ -130,6 +129,13 @@ public class FroggerCtrl implements KeyListener, MouseListener, Serializable
 		{
 			frogView.state = PnlFrog.STATE.GAME_OVER;
 			t.stop();
+			if(frogView.state== PnlFrog.STATE.GAME_OVER && client.getServerView().state== PnlFrog.STATE.GAME_OVER)
+			{
+				frogView.state= PnlFrog.STATE.GAME_OVER_MULTI;
+				client.getServerView().state = PnlFrog.STATE.GAME_OVER_MULTI;
+				frogView.repaint();
+				client.getServerView().repaint();
+			}
 		}
 		
 		checkTime(model.frog);

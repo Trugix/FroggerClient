@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="client funzia">
+    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="client funzia forse 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FroggerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FroggerCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FroggerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PnlFrog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PnlFrog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transfer.java" afterDir="false" />
     </list>
     <list id="dc967c36-5138-4e8e-8dec-ca774b4195c5" name="Changes by Edoardo" comment="Changes by Edoardo" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +69,7 @@
       <updated>1652259209801</updated>
       <workItem from="1652259211132" duration="10845000" />
       <workItem from="1652476650182" duration="109000" />
-      <workItem from="1652688891720" duration="17365000" />
+      <workItem from="1652688891720" duration="18148000" />
     </task>
     <task id="LOCAL-00001" summary="first client">
       <created>1652263118856</created>
@@ -139,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652697661607</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="client funzia forse 2">
+      <created>1652715124787</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1652715124787</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,7 +164,8 @@
     <MESSAGE value="transizione associa immagini con ID" />
     <MESSAGE value="client v0.1" />
     <MESSAGE value="client funzia" />
-    <option name="LAST_COMMIT_MESSAGE" value="client funzia" />
+    <MESSAGE value="client funzia forse 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="client funzia forse 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

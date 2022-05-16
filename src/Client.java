@@ -15,6 +15,11 @@ public class Client {
     private Transfer statoServer;
 
     private FroggerModel serverModel = new FroggerModel(0);
+
+    public PnlFrog getServerView() {
+        return serverView;
+    }
+
     private PnlFrog serverView;
     private boolean first = true;
     private JFrame serverFrame;
