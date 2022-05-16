@@ -9,10 +9,8 @@ import javax.swing.JPanel;
 public class FroggerApp
 {
 	private JFrame frame;
-	
-	/**
-	 * Launch the application.
-	 */
+
+    //Launch the application.
 	public static void main(String[] args)
 	{
 		EventQueue.invokeLater(() ->
@@ -21,7 +19,7 @@ public class FroggerApp
 			{
 				FroggerApp window = new FroggerApp();
 				window.frame.setVisible(true);
-
+				window.frame.setTitle("Frogger");
 			}
 			catch (Exception e)
 			{
@@ -29,15 +27,15 @@ public class FroggerApp
 			}
 		});
 	}
-	
-	/**
-	 * Create the application.
-	 */
+
+    /*
+	 Create the application.
+     */
 	public FroggerApp()
 	{
 		initialize();
 	}
-	
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -47,13 +45,13 @@ public class FroggerApp
 		frame.setBounds(500, 0, 656, 1000);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
-		
+
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBackground(Color.WHITE);
-		
+
 		FroggerModel model;
 		FroggerCtrl control = null;
-		
+
 		try
 		{
 			model = new FroggerModel();
@@ -63,11 +61,11 @@ public class FroggerApp
 		{
 			e.printStackTrace();
 		}
-		
+
 		assert control != null;
 		frame.add(control.frogView, BorderLayout.CENTER);
 		control.frogView.setVisible(true);
 		frame.setVisible(true);
 	}
-	
+
 }

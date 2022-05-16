@@ -23,7 +23,6 @@ public class Client {
 
     public Client(FroggerCtrl ctrl) throws IOException {
         this.ctrl = ctrl;
-     //   this.serverView = new PnlFrog(ctrl);
     }
 
     Thread ricezione = new Thread(new Runnable() {
@@ -33,15 +32,24 @@ public class Client {
                 try {
                     statoServer = (Transfer) in.readObject();
                     serverModel.transferToModel(statoServer);
+                    ctrl.model.setPunteggioAvversario(statoServer.punteggio);
                     if (first) {
-                        serverView = new PnlFrog(serverModel);
-                      //  serverView.ctrl = ctrl;
-                        serverView.state = PnlFrog.STATE.GAME;
                         first = false;
+                        serverView = new PnlFrog(serverModel);
+                        //serverView.ctrl = ctrl;
+                        serverView.state = PnlFrog.STATE.GAME;
                         newWindow();
                     }
                     serverView.setEntities(serverModel.entities);
                     serverView.repaint();
+                    if (serverModel.frog.getVite()<=0)
+                        serverView.state = PnlFrog.STATE.GAME_OVER;
+                    if(ctrl.frogView.state== PnlFrog.STATE.GAME_OVER && serverView.state== PnlFrog.STATE.GAME_OVER)
+                    {
+                        ctrl.frogView.state= PnlFrog.STATE.GAME_OVER_MULTI;
+                        serverView.state = PnlFrog.STATE.GAME_OVER_MULTI;
+                        ctrl.frogView.repaint();
+                    }
                 } catch (NullPointerException e)
                 {
                     System.out.println("Nulla");
@@ -71,7 +79,6 @@ public class Client {
             in = new ObjectInputStream(inputStream);
             out = new ObjectOutputStream(outputStream);
             ricezione.start();
-           // newWindow();
         } catch (UnknownHostException e) {
             System.err.println("Host sconosciuto");
             System.out.println(e);

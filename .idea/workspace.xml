@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="client v0.1">
+    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="client funzia">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FroggerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FroggerCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerCtrl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FroggerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PnlFrog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PnlFrog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transfer.java" afterDir="false" />
     </list>
     <list id="dc967c36-5138-4e8e-8dec-ca774b4195c5" name="Changes by Edoardo" comment="Changes by Edoardo" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +74,7 @@
       <updated>1652259209801</updated>
       <workItem from="1652259211132" duration="10845000" />
       <workItem from="1652476650182" duration="109000" />
-      <workItem from="1652688891720" duration="8534000" />
+      <workItem from="1652688891720" duration="17365000" />
     </task>
     <task id="LOCAL-00001" summary="first client">
       <created>1652263118856</created>
@@ -129,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652275961112</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="client funzia">
+      <created>1652697661607</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1652697661607</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,20 +161,22 @@
     <MESSAGE value="Changes by Edoardo" />
     <MESSAGE value="transizione associa immagini con ID" />
     <MESSAGE value="client v0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="client v0.1" />
+    <MESSAGE value="client funzia" />
+    <option name="LAST_COMMIT_MESSAGE" value="client funzia" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PnlFrog.java</url>
-          <line>210</line>
-          <option name="timeStamp" value="20" />
+          <url>file://$PROJECT_DIR$/src/Prize.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="PnlFrog" memberName="destinations" />
         <PinnedItemInfo parentTag="Entity$Position" memberName="x" />
       </pinned-members>
     </pin-to-top-manager>

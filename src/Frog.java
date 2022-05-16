@@ -3,9 +3,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Frog extends Entity {
-	
+
 	private static final int MAX_VITE = 6;
-	
+
 	final int dy=100;
 	private int vite;
 
@@ -32,13 +32,13 @@ public class Frog extends Entity {
 	private static final int STARTING_FROGX = 460;
 	private static final int STARTING_FROGY = 10;
 
-	
+
 	public Frog(int x, int y, int dx, String spriteID, int dimx, int dimy)
 	{
 		super(x, y, dx, spriteID, dimx, dimy);
 		vite=MAX_VITE;
 	}
-	
+
 	public int getVite()
 	{
 		return vite;
@@ -61,20 +61,24 @@ public class Frog extends Entity {
 				break;
 		}
 	}
-	
-	
+
+	public void setVite(int vite)
+	{
+		this.vite = vite;
+	}
+
 	public void updateHitbox ()
 	{
 		this.hitbox = new Rectangle(this.p.x+10, this.p.y+5, this.dimx-20, this.dimy-10);
 	}
-	
+
 	public void morte() throws IOException
 	{
 		resetPosition ();
 		isMoving=false;
 		this.vite--;
 	}
-	
+
 	public void resetPosition () throws IOException
 	{
 		this.p.setX(STARTING_FROGX);
@@ -82,7 +86,7 @@ public class Frog extends Entity {
 		updateHitbox();
 		rotate(0);
 	}
-	
+
 	public void stepNext(int tempDx)
 	{
 		p.setX(p.getX() + tempDx);

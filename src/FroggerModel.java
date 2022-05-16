@@ -8,19 +8,21 @@ import java.util.ArrayList;
 
 public class FroggerModel implements Serializable
 {
-	
+
 	private static final int STARTING_FROGX = 460;
 	private static final int STARTING_FROGY = 10;
-	
+
 	public static final String PATH_SPRITE = "src/../sprites/";
-	
+
 	public ArrayList<Entity> entities = new ArrayList<>();
 	public ArrayList<NPC> NPCs = new ArrayList<>();
 	public ArrayList<Prize> prizes = new ArrayList<>();
 	public ArrayList<Turtle> turtles = new ArrayList<>();
 	public ArrayList<Skull> skulls = new ArrayList<>();
-	
+
 	public int tempo = 500;
+
+	private int punteggioAvversario;
 
 	public int getPoints() {
 		return points;
@@ -77,7 +79,7 @@ public class FroggerModel implements Serializable
 	}
 
 	public Frog frog = new Frog(STARTING_FROGX, STARTING_FROGY, 70, "froUp", 75, 75);
-	
+
 	private final NPC carroA = new NPC(500, 510, -7, "truck", 200, 85, true);
 	private final NPC carroB = new NPC(981, 510, -7, "truck", 200, 85, true);
 	private final NPC autoSportA = new NPC(235, 410, 10, "autoSport", 100, 85, true);
@@ -89,7 +91,7 @@ public class FroggerModel implements Serializable
 	private final NPC carFormula2 = new NPC(724, 210, 12, "formula2", 100, 85, true);
 	private final NPC carPoliceA = new NPC(684, 110, -10, "police", 110, 85, true);
 	private final NPC carPoliceB = new NPC(215, 110, -10, "police", 110, 85, true);
-	
+
 	private final NPC log6A = new NPC(1000, 1110, 11, "log6", 595, 85, false);
 	private final NPC log6B = new NPC(100, 1110, 11, "log6", 595, 85, false);
 	private final NPC log4A = new NPC(987, 810, 9, "log4", 395, 85, false);
@@ -98,7 +100,7 @@ public class FroggerModel implements Serializable
 	private final NPC log3A = new NPC(-217, 910, 5, "log3", 295, 85, false);
 	private final NPC log3B = new NPC(397, 910, 5, "log3", 295, 85, false);
 	private final NPC log3C = new NPC(943, 910, 5, "log3", 295, 85, false);
-	
+
 	private final NPC turtleA = new Turtle(698, 710, -6, "turtle1", 110, 85, false);
 	private final Turtle turtleB = new Turtle(254, 710, -6, "turtle1", 110, 85, false);
 	private final Turtle turtleC = new Turtle(1104, 710, -6, "turtle1", 110, 85, false);
@@ -106,15 +108,15 @@ public class FroggerModel implements Serializable
 	private final Turtle turtleE = new Turtle(348, 1010, -5, "turtle1", 110, 85, false);
 	private final NPC turtleF = new Turtle(698, 1010, -5, "turtle1", 110, 85, false);
 	private final Turtle turtleG = new Turtle(1004, 1010, -5, "turtle1", 110, 85, false);
-	
+
 	private final Prize lilyPadA = new Prize(30, 1210, 0, "lilyPad", 100, 100, false, 50);
 	private final Prize lilyPadB = new Prize(240, 1210, 0, "lilyPad", 100, 100, false, 50);
 	private final Prize lilyPadC = new Prize(450, 1210, 0, "lilyPad", 100, 100, false, 50);
 	private final Prize lilyPadD = new Prize(660, 1210, 0, "lilyPad", 100, 100, false, 50);
 	private final Prize lilyPadE = new Prize(870, 1210, 0, "lilyPad", 100, 100, false, 50);
-	
+
 	private final Prize fly = new Prize(465, 1215, 0, "fly", 100, 100, true, 200);
-	
+
 
 	public FroggerModel(int i) throws IOException
 	{
@@ -123,7 +125,7 @@ public class FroggerModel implements Serializable
 	public FroggerModel() throws IOException
 	{
 		entities.add(frog);
-		
+
 		NPCs.add(carroA);
 		NPCs.add(carroB);
 		NPCs.add(autoSportA);
@@ -135,7 +137,7 @@ public class FroggerModel implements Serializable
 		NPCs.add(carFormula2);
 		NPCs.add(carPoliceA);
 		NPCs.add(carPoliceB);
-		
+
 		NPCs.add(log6A);
 		NPCs.add(log6B);
 		NPCs.add(log4A);
@@ -144,7 +146,7 @@ public class FroggerModel implements Serializable
 		NPCs.add(log3A);
 		NPCs.add(log3B);
 		NPCs.add(log3C);
-		
+
 		NPCs.add(turtleA);
 		turtles.add(turtleB);
 		turtles.add(turtleD);
@@ -159,11 +161,21 @@ public class FroggerModel implements Serializable
 		prizes.add(lilyPadD);
 		prizes.add(lilyPadE);
 		prizes.add(fly);
-		
-		
+
+
 		NPCs.addAll(turtles);
 		entities.addAll(NPCs);
 		entities.addAll(prizes);
+	}
+
+	public int getPunteggioAvversario()
+	{
+		return punteggioAvversario;
+	}
+
+	public void setPunteggioAvversario(int punteggioAvversario)
+	{
+		this.punteggioAvversario = punteggioAvversario;
 	}
 
 	public void moveFrog(int direzione) throws IOException
@@ -206,9 +218,9 @@ public class FroggerModel implements Serializable
 
 	public void transferToModel(Transfer transfer)
 	{
-		this.points =transfer.punteggio;
-		this.entities=transfer.entities;
-		this.tempo=transfer.time;
+		this.points = transfer.punteggio;
+		this.entities = transfer.entities;
+		this.tempo = transfer.time;
+		this.frog.setVite(transfer.vite);
 	}
-
 }
