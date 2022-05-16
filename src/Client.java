@@ -23,7 +23,7 @@ public class Client {
 
     public Client(FroggerCtrl ctrl) throws IOException {
         this.ctrl = ctrl;
-        this.serverView=new PnlFrog(ctrl);
+     //   this.serverView = new PnlFrog(ctrl);
     }
 
     Thread ricezione = new Thread(new Runnable() {
@@ -33,13 +33,21 @@ public class Client {
                 try {
                     statoServer = (Transfer) in.readObject();
                     serverModel.transferToModel(statoServer);
-                    if (first)
-                    {
+                    if (first) {
                         serverView = new PnlFrog(serverModel);
+                      //  serverView.ctrl = ctrl;
+                        serverView.state = PnlFrog.STATE.GAME;
                         first = false;
+                        newWindow();
                     }
+                    serverView.setEntities(serverModel.entities);
                     serverView.repaint();
-                } catch (Exception e) {
+                } catch (NullPointerException e)
+                {
+                    System.out.println("Nulla");
+                    //quando non ci sono aggiornamenti e quindi statoServer e' null
+                }
+                catch (Exception e) {
                     // TODO Auto-generated catch block
                     System.out.println("CONNESSIONE INTERROTTA");
                     System.exit(0);
@@ -63,7 +71,7 @@ public class Client {
             in = new ObjectInputStream(inputStream);
             out = new ObjectOutputStream(outputStream);
             ricezione.start();
-            newWindow();
+           // newWindow();
         } catch (UnknownHostException e) {
             System.err.println("Host sconosciuto");
             System.out.println(e);
@@ -86,9 +94,16 @@ public class Client {
         serverFrame.setVisible(true);
     }
 
-    public void send() throws IOException {
+    public void send() {
+
         Transfer statoCorrente = ctrl.modelToTransfer(ctrl.model);
-        out.writeObject(statoCorrente);
-        out.reset();
+        try {
+            out.writeObject(statoCorrente);
+            out.reset();
+          //todo  System.out.println("Sent");
+        } catch (IOException e) {
+         System.out.println(e);
+        }
+
     }
 }

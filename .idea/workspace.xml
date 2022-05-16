@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="transizione associa immagini con ID">
-      <change beforePath="$PROJECT_DIR$/src/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transfer.java" afterDir="false" />
+    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="client v0.1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FroggerCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FroggerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PnlFrog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PnlFrog.java" afterDir="false" />
     </list>
     <list id="dc967c36-5138-4e8e-8dec-ca774b4195c5" name="Changes by Edoardo" comment="Changes by Edoardo" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +28,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="290o8tbFFOHbryh2TGGFo0mR187" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -32,17 +36,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="FroggerApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="FroggerApp" />
@@ -65,7 +69,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1652259209801</updated>
-      <workItem from="1652259211132" duration="10577000" />
+      <workItem from="1652259211132" duration="10845000" />
+      <workItem from="1652476650182" duration="109000" />
+      <workItem from="1652688891720" duration="8534000" />
     </task>
     <task id="LOCAL-00001" summary="first client">
       <created>1652263118856</created>
@@ -109,7 +115,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652275450451</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="transizione associa immagini con ID">
+      <created>1652275932044</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1652275932044</updated>
+    </task>
+    <task id="LOCAL-00008" summary="client v0.1">
+      <created>1652275961112</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1652275961112</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,8 +148,25 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first client" />
-    <MESSAGE value="transizione associa immagini con ID" />
     <MESSAGE value="Changes by Edoardo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by Edoardo" />
+    <MESSAGE value="transizione associa immagini con ID" />
+    <MESSAGE value="client v0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="client v0.1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PnlFrog.java</url>
+          <line>210</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Entity$Position" memberName="x" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

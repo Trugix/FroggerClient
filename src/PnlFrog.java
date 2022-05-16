@@ -28,15 +28,15 @@ public class PnlFrog extends JPanel implements Serializable
 	private Rectangle scoreButtonF = new Rectangle(300, 900, 400, 100);
 	private Rectangle quitButtonF = new Rectangle(300, 700, 400, 100);
 	
-	private static boolean first = true;
+	private boolean first = true;
 	
 	ArrayList<Entity> entities;
 	
 	FroggerCtrl ctrl;
 	Graphics2D g2;
 	
-	FroggerModel modelToDraw;
-	ArrayList<Entity.Position> destinations = new ArrayList<>();
+	public FroggerModel modelToDraw;
+	public ArrayList<Entity.Position> destinations = new ArrayList<>();
 	
 
 	public enum STATE
@@ -46,7 +46,7 @@ public class PnlFrog extends JPanel implements Serializable
 		GAME_OVER
 	}
 	
-	public static STATE state = STATE.MENU;
+	public  STATE state = STATE.MENU;
 
 	private BufferedImage lilFrog = ImageIO.read(new File("src/../sprites/frogSmall.png"));
 	
@@ -89,8 +89,8 @@ public class PnlFrog extends JPanel implements Serializable
 			
 			for (Entity e : entities)
 			{
-				g2.drawImage(ctrl.associaSprite(e.spriteID), e.p.getX(), e.p.getY(), null);
-				// g2.draw(e.hitbox); //solo per vedere l'hitbox
+				g2.drawImage(FroggerCtrl.associaSprite(e.spriteID), e.p.getX(), e.p.getY(), null);
+				// g2.draw(e.hitbox); //todo solo per vedere l'hitbox
 			}
 			g2.drawImage(ctrl.associaSprite(entities.get(0).spriteID), entities.get(0).p.x, entities.get(0).p.y, null);
 			

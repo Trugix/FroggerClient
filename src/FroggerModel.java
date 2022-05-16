@@ -31,36 +31,51 @@ public class FroggerModel implements Serializable
 	}
 
 	public int points = 0;
-	
-	public BufferedImage[] spritesFrog = {ImageIO.read(new File(PATH_SPRITE + "frogUp.png")), ImageIO.read(new File(PATH_SPRITE + "frogRight.png")),
-			ImageIO.read(new File(PATH_SPRITE + "frogDown.png")), ImageIO.read(new File(PATH_SPRITE + "frogLeft.png"))};
+	public static BufferedImage[] spritesFrog;
+	public static BufferedImage[] spritesFrogMov;
+	public static BufferedImage spriteCarro;
+	public static final BufferedImage spriteAutoSport;
+	public static final BufferedImage spriteBulldozer;
+	public static final BufferedImage spriteFormula1;
+	public static final BufferedImage spriteFormula2;
+	public static final BufferedImage spritePolice;
+	public static final BufferedImage spriteLog6;
+	public static final BufferedImage spriteLog3;
+	public static final BufferedImage spriteLog4;
+	public static final BufferedImage[] spritesTurtle;
+	public static final BufferedImage spriteFly;
+	public static final BufferedImage spriteLilyPad;
+	public static final BufferedImage spriteFrogLily;
+	public static final BufferedImage spriteSkull;
+	public static final BufferedImage spriteVoid;
 
-	public BufferedImage[] spritesFrogMov = {ImageIO.read(new File(PATH_SPRITE + "frogMovementUp.png")), ImageIO.read(new File(PATH_SPRITE + "frogMovementRight.png")),
-			ImageIO.read(new File(PATH_SPRITE + "frogMovementDown.png")), ImageIO.read(new File(PATH_SPRITE + "frogMovementLeft.png"))};
 
-	
-	public final BufferedImage spriteCarro = ImageIO.read(new File(PATH_SPRITE + "carro1.png"));
-	public final BufferedImage spriteAutoSport = ImageIO.read(new File(PATH_SPRITE + "autoSport.png"));
-	public final BufferedImage spriteBulldozer = ImageIO.read(new File(PATH_SPRITE + "bulldozer.png"));
-	public final BufferedImage spriteFormula1 = ImageIO.read(new File(PATH_SPRITE + "carFormula1.png"));
-	public final BufferedImage spriteFormula2 = ImageIO.read(new File(PATH_SPRITE + "carFormula2.png"));
-	public final BufferedImage spritePolice = ImageIO.read(new File(PATH_SPRITE + "carPolice.png"));
-	
-	public final BufferedImage spriteLog6 = ImageIO.read(new File(PATH_SPRITE + "log6.png"));
-	public final BufferedImage spriteLog3 = ImageIO.read(new File(PATH_SPRITE + "log3.png"));
-	public final BufferedImage spriteLog4 = ImageIO.read(new File(PATH_SPRITE + "log4.png"));
-	
-	public final BufferedImage[] spritesTurtle = {ImageIO.read(new File(PATH_SPRITE + "turtle1.png")), ImageIO.read(new File(PATH_SPRITE + "turtle2.png")), ImageIO.read(new File(PATH_SPRITE + "turtle3.png"))};
+	static {
+		try {
+			spritesFrog = new BufferedImage[]{ImageIO.read(new File(PATH_SPRITE + "frogUp.png")), ImageIO.read(new File(PATH_SPRITE + "frogRight.png")),
+					ImageIO.read(new File(PATH_SPRITE + "frogDown.png")), ImageIO.read(new File(PATH_SPRITE + "frogLeft.png"))};
+			spritesFrogMov = new BufferedImage[]{ImageIO.read(new File(PATH_SPRITE + "frogMovementUp.png")), ImageIO.read(new File(PATH_SPRITE + "frogMovementRight.png")),
+					ImageIO.read(new File(PATH_SPRITE + "frogMovementDown.png")), ImageIO.read(new File(PATH_SPRITE + "frogMovementLeft.png"))};
+			spriteCarro = ImageIO.read(new File(PATH_SPRITE + "carro1.png"));
+			spriteAutoSport = ImageIO.read(new File(PATH_SPRITE + "autoSport.png"));
+			spriteBulldozer = ImageIO.read(new File(PATH_SPRITE + "bulldozer.png"));
+			spriteFormula1 = ImageIO.read(new File(PATH_SPRITE + "carFormula1.png"));
+			spriteFormula2 = ImageIO.read(new File(PATH_SPRITE + "carFormula2.png"));
+			spritePolice = ImageIO.read(new File(PATH_SPRITE + "carPolice.png"));
+			spriteLog6 = ImageIO.read(new File(PATH_SPRITE + "log6.png"));
+			spriteLog3 = ImageIO.read(new File(PATH_SPRITE + "log3.png"));
+			spriteLog4 = ImageIO.read(new File(PATH_SPRITE + "log4.png"));
+			spritesTurtle = new BufferedImage[]{ImageIO.read(new File(PATH_SPRITE + "turtle1.png")), ImageIO.read(new File(PATH_SPRITE + "turtle2.png")), ImageIO.read(new File(PATH_SPRITE + "turtle3.png"))};
+			spriteFly = ImageIO.read(new File(PATH_SPRITE + "fly.png"));
+			spriteLilyPad = ImageIO.read(new File(PATH_SPRITE + "lily.png"));
+			spriteFrogLily = ImageIO.read(new File(PATH_SPRITE + "frogAtRest.png"));
+			spriteSkull = ImageIO.read(new File(PATH_SPRITE + "skull.png"));
+			spriteVoid = ImageIO.read(new File(PATH_SPRITE + "void.png"));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
-	public final BufferedImage spriteFly = ImageIO.read(new File(PATH_SPRITE + "fly.png"));
-	
-	public final BufferedImage spriteLilyPad = ImageIO.read(new File(PATH_SPRITE + "lily.png"));
-	public final BufferedImage spriteFrogLily = ImageIO.read(new File(PATH_SPRITE + "frogAtRest.png"));
-	
-	public final BufferedImage spriteSkull = ImageIO.read(new File(PATH_SPRITE + "skull.png"));
-	
-	public final BufferedImage spriteVoid = ImageIO.read(new File(PATH_SPRITE + "void.png"));
-	
 	public Frog frog = new Frog(STARTING_FROGX, STARTING_FROGY, 70, "froUp", 75, 75);
 	
 	private final NPC carroA = new NPC(500, 510, -7, "truck", 200, 85, true);
