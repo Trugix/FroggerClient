@@ -1,42 +1,54 @@
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+import java.awt.Rectangle;
+import java.io.Serializable;
 
-public class Frog extends Entity {
+public class Frog extends Entity implements Serializable   //rana giocabile
+{
 
 	private static final int MAX_VITE = 6;
 
-	final int dy=100;
-	private int vite;
+	//di quanto si muove la rana ogni frame
+	private static final int DX = 14;
+	private static final int DY = 20;
 
-	public int getDirection() {
+	//coordinate di start della rana
+	private static final int STARTING_FROGX = 460;
+	private static final int STARTING_FROGY = 10;
+	private static final int Y_LOWER_BOUND = 10;
+	private static final int Y_HIGHER_BOUND = 1210;
+	private static final int X_LEFT_BOUND = 0;
+	private static final int X_RIGHT_BOUND = 920;
+
+	private int vite;   // numero di vite attuali
+
+	public int getDirection()
+	{
 		return direction;
 	}
 
-	public void setDirection(int direction) {
+	public void setDirection(int direction)
+	{
 		this.direction = direction;
 	}
 
-	private int direction = 0;
+	private int direction = 0;  //direzione in cui la rana sta guardando
 
-	private boolean isMoving=false;
+	private boolean isMoving = false;
 
-	public boolean isMoving() {
+	public boolean isMoving()
+	{
 		return isMoving;
 	}
 
-	public void setMoving(boolean moving) {
+	public void setMoving(boolean moving)
+	{
 		isMoving = moving;
 	}
-
-	private static final int STARTING_FROGX = 460;
-	private static final int STARTING_FROGY = 10;
 
 
 	public Frog(int x, int y, int dx, String spriteID, int dimx, int dimy)
 	{
 		super(x, y, dx, spriteID, dimx, dimy);
-		vite=MAX_VITE;
+		vite = MAX_VITE;
 	}
 
 	public int getVite()
@@ -44,21 +56,35 @@ public class Frog extends Entity {
 		return vite;
 	}
 
+	/**
+	 * ruota lo sprite della rana quando si cambia direzione
+	 *
+	 * @param targetDir direzione in cui voglio guardare
+	 */
 	public void rotate(int targetDir)
 	{
-		switch (targetDir) {
-			case 0:
-				this.spriteID = "frogUp";
-				break;
-			case 1:
-				this.spriteID = "frogRight";
-				break;
-			case 2:
-				this.spriteID = "frogDown";
-				break;
-			case 3:
-				this.spriteID = "frogLeft";
-				break;
+		switch (targetDir)
+		{
+			case 0 ->
+			{
+				this.setSpriteID("frogUp");
+				setDirection(targetDir);
+			}
+			case 1 ->
+			{
+				this.setSpriteID("frogRight");
+				setDirection(targetDir);
+			}
+			case 2 ->
+			{
+				this.setSpriteID("frogDown");
+				setDirection(targetDir);
+			}
+			case 3 ->
+			{
+				this.setSpriteID("frogLeft");
+				setDirection(targetDir);
+			}
 		}
 	}
 
@@ -67,19 +93,22 @@ public class Frog extends Entity {
 		this.vite = vite;
 	}
 
-	public void updateHitbox ()
+	public void updateHitbox()
 	{
-		this.hitbox = new Rectangle(this.p.x+10, this.p.y+5, this.dimx-20, this.dimy-10);
+		this.setHitbox(new Rectangle(this.p.x, this.p.y, this.getDimx(), this.getDimy()));
 	}
 
-	public void morte() throws IOException
+	/**
+	 *
+	 */
+	public void morte()
 	{
-		resetPosition ();
-		isMoving=false;
+		resetPosition();
+		isMoving = false;
 		this.vite--;
 	}
 
-	public void resetPosition () throws IOException
+	public void resetPosition()
 	{
 		this.p.setX(STARTING_FROGX);
 		this.p.setY(STARTING_FROGY);
@@ -87,49 +116,59 @@ public class Frog extends Entity {
 		rotate(0);
 	}
 
+	/**
+	 * metodo che aggiorna la posizione e l'hitbox della rana ad ogni frame
+	 */
 	public void stepNext(int tempDx)
 	{
 		p.setX(p.getX() + tempDx);
-		if (p.getX() > 920) //per evitare che la rana se ne vada dalla schermo
-			p.setX(920);
-		if (p.getX() < 0)
-			p.setX(0);
-		//hitbox = (new Rectangle(this.p.x, this.p.y, this.dimx,this.dimy));
+		if (p.getX() > X_RIGHT_BOUND) //per evitare che la rana se ne vada dalla schermo
+			p.setX(X_RIGHT_BOUND);
+		if (p.getX() < X_LEFT_BOUND) //per evitare che la rana se ne vada dalla schermo
+			p.setX(X_LEFT_BOUND);
 		updateHitbox();
 	}
 
+	/**
+	 * metodo che fa muovere la rana in più frame al posto che in un singolo frame
+	 * in questo modo il movimento è più fluido e si possono usare altri sprite in movimento
+	 */
 	public void nextSlide()
 	{
 		if (isMoving)
 		{
 			switch (direction)
 			{
-				case 0:
-					spriteID = "frogMovUp";
-					p.y+=20;
-					if (p.getY() > 1210)
-						p.setY(1210);
-					break;
-				case 1:
-					spriteID = "frogMovRight";
-					p.x+=14;
-					if (p.getX() > 920)
-						p.setX(920);
-					break;
-				case 2:
-					spriteID = "frogMovDown";
-					p.y-=20;
-					if (p.getY() < 10)
-						p.setY(10);
-					break;
-				case 3:
-					spriteID = "frogMovLeft";
-					p.x-=14;
-					if (p.getX() < 0)
-						p.setX(0);
-					break;
+				case 0 ->
+				{
+					setSpriteID("frogMovUp");
+					p.y += DY;
+					if (p.getY() > Y_HIGHER_BOUND)
+						p.setY(Y_HIGHER_BOUND);
+				}
+				case 1 ->
+				{
+					setSpriteID("frogMovRight");
+					p.x += DX;
+					if (p.getX() > X_RIGHT_BOUND)
+						p.setX(X_RIGHT_BOUND);
+				}
+				case 2 ->
+				{
+					setSpriteID("frogMovDown");
+					p.y -= DY;
+					if (p.getY() < Y_LOWER_BOUND)
+						p.setY(Y_LOWER_BOUND);
+				}
+				case 3 ->
+				{
+					setSpriteID("frogMovLeft");
+					p.x -= DX;
+					if (p.getX() < X_LEFT_BOUND)
+						p.setX(X_LEFT_BOUND);
+				}
 			}
 		}
-		hitbox = (new Rectangle(this.p.x, this.p.y, this.dimx,this.dimy));
+		updateHitbox();
 	}
 }

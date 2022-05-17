@@ -1,16 +1,16 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.io.IOException;
-import java.net.ServerSocket;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class FroggerApp
+public class FroggerApp //main
 {
 	private JFrame frame;
 
-    //Launch the application.
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args)
 	{
 		EventQueue.invokeLater(() ->
@@ -28,9 +28,9 @@ public class FroggerApp
 		});
 	}
 
-    /*
-	 Create the application.
-     */
+	/**
+	 * Create the application.
+	 */
 	public FroggerApp()
 	{
 		initialize();
@@ -42,7 +42,7 @@ public class FroggerApp
 	private void initialize()
 	{
 		frame = new JFrame();
-		frame.setBounds(500, 0, 656, 1000);
+		frame.setBounds(100, 0, 656, 1000);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 
@@ -50,21 +50,14 @@ public class FroggerApp
 		mainPanel.setBackground(Color.WHITE);
 
 		FroggerModel model;
-		FroggerCtrl control = null;
+		FroggerCtrl control;
 
-		try
-		{
-			model = new FroggerModel();
-			control = new FroggerCtrl(model);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+		model = new FroggerModel();
+		control = new FroggerCtrl(model);
 
-		assert control != null;
-		frame.add(control.frogView, BorderLayout.CENTER);
-		control.frogView.setVisible(true);
+
+		frame.add(control.getFrogView(), BorderLayout.CENTER);
+		control.getFrogView().setVisible(true);
 		frame.setVisible(true);
 	}
 

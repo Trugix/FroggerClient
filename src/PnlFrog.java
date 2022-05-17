@@ -1,42 +1,44 @@
-import java.awt.*;
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.Serializable;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 
-public class PnlFrog extends JPanel implements Serializable
+public class PnlFrog extends JPanel //pannello grafico
 {
-	// Colori go brrrr
+	//colori usati
 	private static final Color COLORE_STRADA = new Color(40, 40, 40);
 	private static final Color COLORE_ACQUA = new Color(25, 25, 180);
 	private static final Color COLORE_CHECHKPOINT = new Color(119, 121, 63);
 	private static final Color COLORE_ARRIVO = new Color(30, 220, 30);
 	private static final Color COLORE_RIGHE = new Color(200, 200, 200);
 
+	//numero di righe
 	private static final int NUMERO_CASELLE = 5;
 	private static final int NUMERO_CASELLE_RIPOSO = 1;
 
-	private Rectangle playButton = new Rectangle(300, -1100, 400, 100);
-	private Rectangle multiButton = new Rectangle(300, -900, 400, 100);
-	private Rectangle quitButton = new Rectangle(300, -700, 400, 100);
+	private static final Font ftn = new Font("arial", Font.BOLD, 100);
+	private static final Font ftn1 = new Font("arial", Font.BOLD, 60);
+	private static final Font ftn2 = new Font("arial", Font.BOLD, 50);
+
+	//pulsanti del menu
+	private static final Rectangle playButton = new Rectangle(300, -1100, 400, 100);
+	private static final Rectangle multiButton = new Rectangle(300, -900, 400, 100);
+	private static final Rectangle quitButton = new Rectangle(300, -700, 400, 100);
 
 	private boolean first = true;
 
+	private ArrayList<Entity> entities;
 
-	ArrayList<Entity> entities;
+	private FroggerModel modelToDraw;
+	private ArrayList<Entity.Position> destinations = new ArrayList<>();   //destinazioni possibili per le lilypad e le mosche
 
-	FroggerCtrl ctrl;
-	Graphics2D g2;
+	private double scale;
 
-	FroggerModel modelToDraw;
-	ArrayList<Entity.Position> destinations = new ArrayList<>();
-
-	public double s;
-	public enum STATE
+	public enum STATE   //stati possibili del pannello grafico
 	{
 		MENU,
 		LOADING,
@@ -45,9 +47,27 @@ public class PnlFrog extends JPanel implements Serializable
 		GAME_OVER_MULTI
 	}
 
-	public STATE state = STATE.MENU;
+	private STATE state = STATE.MENU;    //stato di partenza
 
-	private BufferedImage lilFrog = ImageIO.read(new File("src/../sprites/frogSmall.png"));
+	public void setState(STATE state)
+	{
+		this.state = state;
+	}
+
+	public STATE getState()
+	{
+		return state;
+	}
+
+	public double getScale()
+	{
+		return scale;
+	}
+
+	public ArrayList<Entity.Position> getDestinations()
+	{
+		return destinations;
+	}
 
 	public Rectangle getPlayButton()
 	{
@@ -69,125 +89,112 @@ public class PnlFrog extends JPanel implements Serializable
 		this.entities = entities;
 	}
 
-	public PnlFrog(FroggerModel model) throws IOException
+	public PnlFrog(FroggerModel model)
 	{
-		this.modelToDraw=model;
-		this.entities=modelToDraw.entities;
+		this.modelToDraw = model;
+		this.entities = modelToDraw.getEntities();
 		this.setFocusable(true);
 	}
 
+	/**
+	 * metodo che si occupa di scegliere cosa disegnare
+	 *
+	 * @param g the <code>Graphics</code> object to protect
+	 */
 	@Override
 	protected void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		g2 = (Graphics2D) g;
-		s = Math.min(getWidth(), getHeight() / 1.5) / 1000.;
-		g2.scale(s, -s);
-		g2.translate(0, -1500);
+		Graphics2D g21 = (Graphics2D) g;
+		scale = Math.min(getWidth(), getHeight() / 1.5) / 1000.;    //calcolo la scala
+		g21.scale(scale, -scale);
+		g21.translate(0, -1500);     //sposto l'origine in basso a sinistra
 
-		g2.setColor(Color.BLACK);    //Sfondo nero neutro, il primo layer
-		g2.fillRect(0, 0, 1000, 1500);
+		g21.setColor(Color.BLACK);    //Sfondo nero neutro, il primo layer
+		g21.fillRect(0, 0, 1000, 1500);
 
-		Font ftn = new Font("arial", Font.BOLD, 100);
-		Font ftn1 = new Font("arial", Font.BOLD, 60);
-		Font ftn2 = new Font("arial", Font.BOLD, 50);
+
 		Graphics2D g2 = (Graphics2D) g;
 		switch (state)
 		{
-			case MENU:
+			case MENU ->
+			{  //disegno il menu
 
 				g2.scale(1, -1);
-
 				g2.setFont(ftn);
-
 				g2.setColor(Color.magenta);
 				g2.drawString("FROGGER", 250, -1200);
 				g2.setColor(Color.yellow);
 				g2.drawString("FROGGER", 255, -1205);
 				g2.setColor(Color.GREEN);
 				g2.drawString("FROGGER", 260, -1210);
-
 				g2.setColor(Color.yellow);
 				g2.setFont(ftn1);
-
 				g2.drawString("1 PLAYER", 360, -1030);
 				g2.draw(playButton);
 				g2.drawString("2 PLAYER", 360, -830);
 				g2.draw(multiButton);
 				g2.drawString("QUIT GAME", 330, -630);
 				g2.draw(quitButton);
-
-				g2.scale(1,-1);
-				break;
-			case LOADING:
 				g2.scale(1, -1);
-
+			}
+			case LOADING ->
+			{   //schermata di loading
+				g2.scale(1, -1);
 				g2.setFont(ftn2);
-
 				g2.setColor(Color.YELLOW);
 				g2.drawString("WAITING FOR CONNECTION...", 175, -755);
-
-				g2.scale(1,-1);
-				break;
-			case GAME:
+				g2.scale(1, -1);
+			}
+			case GAME ->
+			{  //disegno il gioco
 				paintBackground(g2);  //Sfondo giocabile, secondo layer
-
 				for (Entity e : entities)
 				{
-					g2.drawImage(FroggerCtrl.associaSprite(e.spriteID), e.p.getX(), e.p.getY(), null);
+					g2.drawImage(FroggerCtrl.associaSprite(e.getSpriteID()), e.p.getX(), e.p.getY(), null);
 					// g2.draw(e.hitbox); //solo per vedere l'hitbox
 				}
-				g2.drawImage(FroggerCtrl.associaSprite(entities.get(0).spriteID), entities.get(0).p.x, entities.get(0).p.y, null);
-
+				g2.drawImage(FroggerCtrl.associaSprite(entities.get(0).getSpriteID()), entities.get(0).p.x, entities.get(0).p.y, null);
 				printHud(g2);
 				g2.setColor(Color.WHITE);
 				g2.fillRect(1000, 0, 2000, 1500);
-				break;
-			case GAME_OVER:
+			}
+			case GAME_OVER ->
+			{     //schermata finale
+				paintGameOver(g2);
 				g2.scale(1, -1);
-
-				g2.setFont(ftn);
-
-				g2.setColor(Color.magenta);
-				g2.drawString("GAME OVER", 180, -755);
-				g2.setColor(Color.yellow);
-				g2.drawString("GAME OVER", 185, -760);
-				g2.setColor(Color.GREEN);
-				g2.drawString("GAME OVER", 190, -765);
-				g2.setFont(ftn1);
-				g2.drawString("Il tuo punteggio è: "+ modelToDraw.getPoints(), 170, -500);
-				g2.scale(1,-1);
-				break;
-			case GAME_OVER_MULTI:
-				g2.scale(1, -1);
-
-				g2.setFont(ftn);
-
-				g2.setColor(Color.magenta);
-				g2.drawString("GAME OVER", 180, -755);
-				g2.setColor(Color.yellow);
-				g2.drawString("GAME OVER", 185, -760);
-				g2.setColor(Color.GREEN);
-				g2.drawString("GAME OVER", 190, -765);
-				g2.setFont(ftn1);
-				g2.drawString("Il tuo punteggio è: " + modelToDraw.getPoints(), 170, -500);
-				if (modelToDraw.getPoints()>modelToDraw.getPunteggioAvversario())
+			}
+			case GAME_OVER_MULTI ->
+			{   //schermata finale multiplayer
+				paintGameOver(g2);
+				if (modelToDraw.getPoints() > modelToDraw.getPunteggioAvversario()) //scrivo il risultato
 					g2.drawString("Hai vinto", 170, -400);
-				else if (modelToDraw.getPoints()<modelToDraw.getPunteggioAvversario())
+				else if (modelToDraw.getPoints() < modelToDraw.getPunteggioAvversario())
 					g2.drawString("Hai perso", 170, -400);
 				else
 					g2.drawString("Parità", 170, -400);
-				g2.scale(1,-1);
-
-
-				break;
+				g2.scale(1, -1);
+			}
 		}
+	}
+
+	private void paintGameOver(Graphics2D g2){
+		g2.scale(1, -1);
+		g2.setFont(ftn);
+		g2.setColor(Color.magenta);
+		g2.drawString("GAME OVER", 180, -755);
+		g2.setColor(Color.yellow);
+		g2.drawString("GAME OVER", 185, -760);
+		g2.setColor(Color.GREEN);
+		g2.drawString("GAME OVER", 190, -765);
+		g2.setFont(ftn1);
+		g2.drawString("Il tuo punteggio è: " + modelToDraw.getPoints(), 170, -500);
 	}
 
 	/**
 	 * Metodo che si occupa della creazione dello sfondo giocabile
 	 *
-	 * @param g2
+	 * @param g2 oggetto grafico
 	 */
 	private void paintBackground(Graphics2D g2)
 	{
@@ -217,7 +224,13 @@ public class PnlFrog extends JPanel implements Serializable
 		g2.fillRect(0, 600 - 5, 1000, 9);
 	}
 
-
+	/**
+	 * disegna le linee dell'asfalto
+	 *
+	 * @param g2 oggetto grafico
+	 * @param inizio punto d'inizio
+	 * @param nCaselle numero di caselle da disegnare
+	 */
 	private void paintLinee(Graphics2D g2, int inizio, int nCaselle)
 	{
 		for (int c = 1; c < nCaselle; c++)
@@ -226,12 +239,25 @@ public class PnlFrog extends JPanel implements Serializable
 
 	}
 
+	/**
+	 *disegno le righe in cui si muovono le entità
+	 *
+	 * @param g2 oggetto grafico
+	 * @param inizio punto d'inizio
+	 * @param nCaselle numero di caselle da disegnare
+	 */
 	private void paintRiga(Graphics2D g2, int inizio, int nCaselle)
 	{
 		for (int c = 0; c < nCaselle; c++)
 			g2.fillRect(0, inizio + 100 * c, 1000, 100);
 	}
 
+	/**
+	 * disegno il punto di arrivo
+	 *
+	 * @param g2 oggetto grafico
+	 * @param inizio punto d'inizio
+	 */
 	private void paintArrivo(Graphics2D g2, int inizio)
 	{
 		int x = 20;
@@ -241,7 +267,7 @@ public class PnlFrog extends JPanel implements Serializable
 				x += 210;
 			g2.fillRect(x, inizio, 120, 120);
 			if (first)
-				destinations.add((new Entity()).new Position(x + 25, inizio + 15));
+				destinations.add((new Entity()).new Position(x + 25, inizio + 15)); //riempio la lista delle possibili destinazioni
 		}
 		first = false;
 	}
@@ -249,26 +275,36 @@ public class PnlFrog extends JPanel implements Serializable
 	/**
 	 * Metodo che crea l'Hud
 	 *
-	 * @param g2
+	 * @param g2 oggetto grafico
 	 */
 	private void printHud(Graphics2D g2)
 	{
 
-		printVite(g2, modelToDraw.frog.getVite());
+		printVite(g2, modelToDraw.getFrog().getVite());
 		printTempo(g2);
 		printPoint(g2, modelToDraw.getPoints());
 	}
 
+	/**
+	 * stampo le vite
+	 * @param g2 oggetto grafico
+	 * @param vite numero di vite correnti
+	 */
 	private void printVite(Graphics2D g2, int vite)
 	{
 		for (int c = 0; c < vite; c++)
-			g2.drawImage(lilFrog, 1 + c * 54, 1447, null);
+			g2.drawImage(FroggerModel.spriteLilFrog, 1 + c * 54, 1447, null);
 	}
 
+	/**
+	 * stampo il tempo rimasto
+	 *
+	 * @param g2 oggetto grafico
+	 */
 	private void printTempo(Graphics2D g2)
 	{
 		g2.setColor(COLORE_ARRIVO);
-		int t = modelToDraw.tempo; //Fattore temporale iniziale
+		int t = modelToDraw.getTempo(); //Fattore temporale iniziale
 		g2.fillRect(830 - t, 1450, t, 40); //Barra della vita
 		g2.scale(1, -1);
 		g2.setFont(new Font("calibri", Font.BOLD, 60));
@@ -276,6 +312,12 @@ public class PnlFrog extends JPanel implements Serializable
 		g2.scale(1, -1);
 	}
 
+	/**
+	 * stampo il punteggio attuale
+	 *
+	 * @param g2 oggetto grafico
+	 * @param point punti attuali
+	 */
 	private void printPoint(Graphics2D g2, int point)
 	{
 		g2.scale(1, -1);

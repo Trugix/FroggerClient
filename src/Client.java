@@ -1,84 +1,80 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class Client {
-    private ServerSocket server = null;
-    private Socket socketClient = null;
-    private int porta = 1234;
     private ObjectInputStream in;
     private ObjectOutputStream out;
-    private Transfer statoServer;
+    private boolean first = true;
 
-    private FroggerModel serverModel = new FroggerModel(0);
+    private FroggerCtrl ctrl;
+    private FroggerModel serverModel = new FroggerModel(0); //crea un'istanza di model che verrà  usata per la finestra del server
 
     public PnlFrog getServerView() {
         return serverView;
     }
 
     private PnlFrog serverView;
-    private boolean first = true;
-    private JFrame serverFrame;
 
-    private FroggerCtrl ctrl;
 
     public Client(FroggerCtrl ctrl) throws IOException {
         this.ctrl = ctrl;
     }
 
+    /**
+     * Thread che ascolta per update da parte client
+     */
     Thread ricezione = new Thread(new Runnable() {
         @Override
         public void run() {
             while(true) {
                 try {
-                    statoServer = (Transfer) in.readObject();
-                    serverModel.transferToModel(statoServer);
-                    ctrl.model.setPunteggioAvversario(statoServer.punteggio);
-                    if (first) {
+                    Transfer statoServer = (Transfer) in.readObject();  //cast dell'input come Transfer
+                    serverModel.transferToModel(statoServer); //chiamata che passa i dati di transfer al model usato per disegnare la schermata del 2ndo giocatore
+
+                    if (first) { //nella prima iterazione crea il nuovo panel e la nuova finestra, inizializzandola allo stato GAME
                         first = false;
                         serverView = new PnlFrog(serverModel);
-                        //serverView.ctrl = ctrl;
-                        serverView.state = PnlFrog.STATE.GAME;
+                        serverView.setState(PnlFrog.STATE.GAME);
                         newWindow();
                     }
-                    serverView.setEntities(serverModel.entities);
+                    serverView.setEntities(serverModel.getEntities());
                     serverView.repaint();
-                    if (serverModel.frog.getVite()<=0)
-                        serverView.state = PnlFrog.STATE.GAME_OVER;
-                    if(ctrl.frogView.state== PnlFrog.STATE.GAME_OVER && serverView.state== PnlFrog.STATE.GAME_OVER)
-                    {
-                        ctrl.frogView.state= PnlFrog.STATE.GAME_OVER_MULTI;
-                        serverView.state = PnlFrog.STATE.GAME_OVER_MULTI;
-                        ctrl.frogView.repaint();
+                    if (serverModel.getFrog().getVite()<=0) {//se l'avversario finisce le vite il suo panel passa a GAME_OVER e il suo punteggio viene salvato
+                        serverView.setState(PnlFrog.STATE.GAME_OVER);
+                        ctrl.getModel().setPunteggioAvversario(statoServer.getPunteggio()); //aggiorna la variabile usata per calcolare chi ha vinto alla fine del gioco
                     }
-                } catch (NullPointerException e)
-                {
-                    System.out.println("Nulla");
-                    //quando non ci sono aggiornamenti e quindi statoServer e' null
+                    if(ctrl.getFrogView().getState() == PnlFrog.STATE.GAME_OVER && serverView.getState() == PnlFrog.STATE.GAME_OVER){ //se entrambi i giocatori sono a GAME_OVER allora si passa alla schermata finale
+                        ctrl.getFrogView().setState(PnlFrog.STATE.GAME_OVER_MULTI);
+                        serverView.setState(PnlFrog.STATE.GAME_OVER_MULTI);
+                        ctrl.getFrogView().repaint();
+                    }
                 }
                 catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    System.out.println("CONNESSIONE INTERROTTA");
+                    System.out.println("ERRORE NELLA COMUNICAZIONE CON IL CLIENT");
+                    e.printStackTrace();
                     System.exit(0);
                 }
             }
         }
     });
-    
+
+    /**
+     * Metodo che inizializza la connessione con il client
+     */
     public void connessione() {
         try {
             Scanner scanner= new Scanner(System.in);
             System.out.println("Inserisci i dati di connessione del server!\nScrivi l'IP e premi INVIO:");
             String ip = scanner.next();
             System.out.println("Scrivi la porta e premi INVIO:");
-            porta = Integer.parseInt(scanner.next());
-            System.out.println("[0] - Provo a connettermi al server...");
-            Socket mioSocket = new Socket(ip,porta);
-            System.out.println("[1] - Connesso!");
+            int porta = Integer.parseInt(scanner.next());
+            System.out.println("Provo a connettermi al server...");
+            Socket mioSocket = new Socket(ip, porta);
+            System.out.println("Connesso");
             InputStream inputStream = mioSocket.getInputStream();
             OutputStream outputStream = mioSocket.getOutputStream();
             in = new ObjectInputStream(inputStream);
@@ -92,29 +88,37 @@ public class Client {
             System.out.println(e);
         }
     }
+
+    /**
+     * crea una nuova finestra con la vista del client
+     */
     public void newWindow()
     {
-        serverFrame = new JFrame();
-        serverFrame.setBounds(500, 0, 656, 1000);
+        JFrame serverFrame = new JFrame();
+        serverFrame.setBounds(750, 0, 493, 750);
         serverFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         serverFrame.setLayout(new BorderLayout());
 
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.WHITE);
-        serverFrame.setTitle("ServerView");
+        serverFrame.setTitle("Avversario");
         serverFrame.add(serverView);
         serverFrame.setVisible(true);
+        serverFrame.setFocusable(false);
     }
 
+    /**
+     * manda in output i dati necessari a disegnare la finestra del server sul lato client
+     */
     public void send() {
 
-        Transfer statoCorrente = ctrl.modelToTransfer(ctrl.model);
+        Transfer statoCorrente = ctrl.modelToTransfer(ctrl.getModel()); //transforma il model attuale in un trasfer da scriver in output
         try {
             out.writeObject(statoCorrente);
             out.reset();
-          //todo  System.out.println("Sent");
         } catch (IOException e) {
-         System.out.println(e);
+            System.out.println(e);
+            throw new RuntimeException(e);
         }
 
     }

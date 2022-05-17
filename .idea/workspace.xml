@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="client funzia 3" />
+    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="client funzia 3">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FroggerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FroggerCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerCtrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FroggerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PnlFrog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PnlFrog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Prize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Prize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Skull.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Skull.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Turtle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Turtle.java" afterDir="false" />
+    </list>
     <list id="dc967c36-5138-4e8e-8dec-ca774b4195c5" name="Changes by Edoardo" comment="Changes by Edoardo" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +80,8 @@
       <updated>1652259209801</updated>
       <workItem from="1652259211132" duration="10845000" />
       <workItem from="1652476650182" duration="109000" />
-      <workItem from="1652688891720" duration="18886000" />
+      <workItem from="1652688891720" duration="18900000" />
+      <workItem from="1652788917229" duration="4051000" />
     </task>
     <task id="LOCAL-00001" summary="first client">
       <created>1652263118856</created>
@@ -144,11 +160,29 @@
       <option name="project" value="LOCAL" />
       <updated>1652715912435</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="client funzia 3">
+      <created>1652721869013</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1652721869014</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -172,15 +206,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="client funzia 3" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Prize.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="PnlFrog" memberName="destinations" />
