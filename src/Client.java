@@ -34,24 +34,24 @@ public class Client {
                 try {
                     Transfer statoServer = (Transfer) in.readObject();  //cast dell'input come Transfer
                     serverModel.transferToModel(statoServer); //chiamata che passa i dati di transfer al model usato per disegnare la schermata del 2ndo giocatore
-
+                    serverModel.setPunteggioAvversario(ctrl.getModel().getPoints());
                     if (first) { //nella prima iterazione crea il nuovo panel e la nuova finestra, inizializzandola allo stato GAME
-                        first = false;
+                        first=false;
                         serverView = new PnlFrog(serverModel);
                         serverView.setState(PnlFrog.STATE.GAME);
                         newWindow();
                     }
                     serverView.setEntities(serverModel.getEntities());
                     serverView.repaint();
-                    if (serverModel.getFrog().getVite()<=0) {//se l'avversario finisce le vite il suo panel passa a GAME_OVER e il suo punteggio viene salvato
+                    if (serverModel.getFrog().getVite()<=0 || serverModel.getDestinazioni()==5) {//se l'avversario finisce le vite ooccupa tutte le destinazioni il suo panel passa a GAME_OVER e il suo punteggio viene salvato
                         serverView.setState(PnlFrog.STATE.GAME_OVER);
-                        ctrl.getModel().setPunteggioAvversario(statoServer.getPunteggio()); //aggiorna la variabile usata per calcolare chi ha vinto alla fine del gioco
+                        ctrl.getModel().setPunteggioAvversario(serverModel.getPoints()); //aggiorna la variabile usata per calcolare chi ha vinto alla fine del gioco
                     }
-                    if(ctrl.getFrogView().getState() == PnlFrog.STATE.GAME_OVER && serverView.getState() == PnlFrog.STATE.GAME_OVER){ //se entrambi i giocatori sono a GAME_OVER allora si passa alla schermata finale
+                    if(ctrl.getFrogView().getState() == PnlFrog.STATE.GAME_OVER && (serverView.getState() == PnlFrog.STATE.GAME_OVER)){ //se entrambi i giocatori sono a GAME_OVER allora si passa alla schermata finale
                         ctrl.getFrogView().setState(PnlFrog.STATE.GAME_OVER_MULTI);
-                        serverView.setState(PnlFrog.STATE.GAME_OVER_MULTI);
                         ctrl.getFrogView().repaint();
                     }
+
                 }
                 catch (Exception e) {
                     System.out.println("ERRORE NELLA COMUNICAZIONE CON IL CLIENT");

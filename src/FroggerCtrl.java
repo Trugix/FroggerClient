@@ -159,7 +159,7 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 			model.getFrog().stepNext(npcContact.getDx());
 		}
 
-		if (model.getFrog().getVite() <= 0) //controllo che le vite siano finite
+		if (model.getFrog().getVite() <= 0 || frogView.getDestinations().isEmpty()) //controllo che le vite siano finite o che il giocatore abbia occupato tutte le destinazioni
 		{
 			frogView.setState(PnlFrog.STATE.GAME_OVER);
 			if (multiplayer)
@@ -167,9 +167,9 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 				if (client.getServerView().getState() == PnlFrog.STATE.GAME_OVER)
 				{
 					frogView.setState(PnlFrog.STATE.GAME_OVER_MULTI);
-					client.getServerView().setState(PnlFrog.STATE.GAME_OVER_MULTI);  //in caso siamo in multiplayer aggiorno la schermata finale con il punteggio avversario
 					frogView.repaint();
 					client.getServerView().repaint();
+					client.send();
 				}
 			}
 			timer.stop();   //fermo il timer
@@ -179,7 +179,6 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 
 		if (model.getFrog().p.getY() >= WATER_HIGHER_BOUND)
 			checkPrize(model.getFrog()); //check per vedere se ho raggiunto la destinazione
-
 
 		updatePrize();  //sposto la mosca
 
@@ -375,7 +374,7 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 		{
 			if (frog.getHitbox().intersects(p.getHitbox()))   //controlla che la rana stia toccando un obbiettivo
 			{
-
+				model.setDestinazioni(model.getDestinazioni()+1);
 				updatePoint(frog, p.getPoint()); //aggiorno il punteggio
 
 				for (int i = 0; i < frogView.getDestinations().size(); i++)
@@ -569,7 +568,7 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 	 */
 	public Transfer modelToTransfer (FroggerModel model)
 	{
-		return new Transfer(model.getEntities(), model.getTempo(), model.getPoints(),model.getFrog().getVite());
+		return new Transfer(model.getEntities(), model.getTempo(), model.getPoints(),model.getFrog().getVite(), model.getDestinazioni());
 	}
 
 	//metodi di interfacce non usati
