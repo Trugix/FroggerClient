@@ -35,6 +35,7 @@ public class PnlFrog extends JPanel //pannello grafico
 	private static final String PLAYER2 = "2 PLAYERS";
 	private static final String QUIT = "QUIT GAME";
 	private static final String GAMEOVER = "GAME OVER";
+	private static final String LOADING = "INSERIRE DATI RICHIESTI IN CONSOLE";
 	private boolean first = true;
 
 	private ArrayList<Entity> entities;
@@ -47,6 +48,7 @@ public class PnlFrog extends JPanel //pannello grafico
 	public enum STATE   //stati possibili del pannello grafico
 	{
 		MENU,
+		LOADING,
 		GAME,
 		GAME_OVER,
 		GAME_OVER_MULTI
@@ -148,6 +150,15 @@ public class PnlFrog extends JPanel //pannello grafico
 
 				g2.setFont(ftn2);
 				g2.drawString("USA LE FRECCE PER MUOVERTI",110, -50);
+				g2.scale(1, -1);
+			}
+			case LOADING ->
+			{   //schermata di loading
+				paintArrivo(g2,1200);
+				g2.scale(1, -1);
+				g2.setFont(ftn2);
+				g2.setColor(Color.YELLOW);
+				g2.drawString(LOADING, 45, -755);
 				g2.scale(1, -1);
 			}
 			case GAME ->

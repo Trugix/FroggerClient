@@ -1,4 +1,5 @@
 import javax.swing.Timer;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -516,11 +517,13 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 				}
 				if (frogView.getMultiButton().contains(e.getX() / frogView.getScale(), e.getY() / (frogView.getScale()) - 1500))//2 giocatori
 				{
-					frogView.setState(PnlFrog.STATE.GAME);
+					frogView.setState(PnlFrog.STATE.LOADING);
 					multiplayer = true;
 					frogView.repaint();
-					client.connessione();
-					timer.start();
+					EventQueue.invokeLater(()->{
+							client.connessione();
+							timer.start();
+							});
 				}
 				if (frogView.getQuitButton().contains(e.getX() / frogView.getScale(), e.getY() / (frogView.getScale()) - 1500)) //buttone quit
 					System.exit(0);

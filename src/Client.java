@@ -76,6 +76,7 @@ public class Client {
             System.out.println("Provo a connettermi al server...");
             Socket mioSocket = new Socket(ip, porta);
             System.out.println("Connesso");
+            ctrl.getFrogView().setState(PnlFrog.STATE.GAME);
             InputStream inputStream = mioSocket.getInputStream();
             OutputStream outputStream = mioSocket.getOutputStream();
             in = new ObjectInputStream(inputStream);

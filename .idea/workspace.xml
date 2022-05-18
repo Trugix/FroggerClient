@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="Client final 1.0">
+    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="Client final 1.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FroggerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FroggerCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerCtrl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PnlFrog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PnlFrog.java" afterDir="false" />
     </list>
@@ -73,7 +72,7 @@
       <workItem from="1652476650182" duration="109000" />
       <workItem from="1652688891720" duration="18900000" />
       <workItem from="1652788917229" duration="8795000" />
-      <workItem from="1652860761958" duration="3929000" />
+      <workItem from="1652860761958" duration="4557000" />
     </task>
     <task id="LOCAL-00001" summary="first client">
       <created>1652263118856</created>
@@ -180,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652861973669</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Client final 1.1">
+      <created>1652864937444</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1652864937444</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +225,8 @@
     <MESSAGE value="Client final 0.5" />
     <MESSAGE value="Client final 0.6" />
     <MESSAGE value="Client final 1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client final 1.0" />
+    <MESSAGE value="Client final 1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client final 1.1" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
