@@ -38,6 +38,7 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 	private static final int  WATER_HIGHER_BOUND = 1200;
 	private static final int  PRIZE_BLINK_THRESHOLD = 40;
 	private static final int  SLIDING_FRAMES = 5;
+	private static final int  NPC_RESET_X = 5;
 
 	public PnlFrog getFrogView()
 	{
@@ -214,7 +215,7 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 			{
 				if (npc.p.getX() + npc.getDimx() < -20)
 				{
-					npc.p.setX(1020);
+					npc.p.setX(NPC_RESET_X);
 				}
 			}
 

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="Client final 0.5">
+    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="Client final 0.6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FroggerCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FroggerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Transfer.java" afterDir="false" />
     </list>
     <list id="dc967c36-5138-4e8e-8dec-ca774b4195c5" name="Changes by Edoardo" comment="Changes by Edoardo" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +69,8 @@
       <workItem from="1652259211132" duration="10845000" />
       <workItem from="1652476650182" duration="109000" />
       <workItem from="1652688891720" duration="18900000" />
-      <workItem from="1652788917229" duration="8417000" />
+      <workItem from="1652788917229" duration="8795000" />
+      <workItem from="1652860761958" duration="860000" />
     </task>
     <task id="LOCAL-00001" summary="first client">
       <created>1652263118856</created>
@@ -165,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652800197476</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Client final 0.6">
+      <created>1652804317118</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1652804317118</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,7 +207,8 @@
     <MESSAGE value="client funzia forse 2" />
     <MESSAGE value="client funzia 3" />
     <MESSAGE value="Client final 0.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client final 0.5" />
+    <MESSAGE value="Client final 0.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client final 0.6" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
