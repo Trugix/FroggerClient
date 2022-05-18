@@ -18,6 +18,7 @@ public class Client {
     }
 
     private PnlFrog serverView;
+    private boolean stop = false;
 
 
     public Client(FroggerCtrl ctrl) throws IOException {
@@ -30,7 +31,7 @@ public class Client {
     Thread ricezione = new Thread(new Runnable() {
         @Override
         public void run() {
-            while(true) {
+            while(!stop) {
                 try {
                     Transfer statoServer = (Transfer) in.readObject();  //cast dell'input come Transfer
                     serverModel.transferToModel(statoServer); //chiamata che passa i dati di transfer al model usato per disegnare la schermata del 2ndo giocatore
@@ -46,12 +47,12 @@ public class Client {
                     if (serverModel.getFrog().getVite()<=0 || serverModel.getDestinazioni()==5) {//se l'avversario finisce le vite ooccupa tutte le destinazioni il suo panel passa a GAME_OVER e il suo punteggio viene salvato
                         serverView.setState(PnlFrog.STATE.GAME_OVER);
                         ctrl.getModel().setPunteggioAvversario(serverModel.getPoints()); //aggiorna la variabile usata per calcolare chi ha vinto alla fine del gioco
+                        stop = true;
                     }
                     if(ctrl.getFrogView().getState() == PnlFrog.STATE.GAME_OVER && (serverView.getState() == PnlFrog.STATE.GAME_OVER)){ //se entrambi i giocatori sono a GAME_OVER allora si passa alla schermata finale
                         ctrl.getFrogView().setState(PnlFrog.STATE.GAME_OVER_MULTI);
                         ctrl.getFrogView().repaint();
                     }
-
                 }
                 catch (Exception e) {
                     System.out.println("ERRORE NELLA COMUNICAZIONE CON IL CLIENT");
@@ -105,13 +106,13 @@ public class Client {
         serverFrame.add(serverView);
         serverFrame.setVisible(true);
         serverFrame.setFocusable(false);
+        serverFrame.setIconImage(FroggerModel.spritesFrog[2]);
     }
 
     /**
      * manda in output i dati necessari a disegnare la finestra del server sul lato client
      */
     public void send() {
-
         Transfer statoCorrente = ctrl.modelToTransfer(ctrl.getModel()); //transforma il model attuale in un trasfer da scriver in output
         try {
             out.writeObject(statoCorrente);
@@ -120,6 +121,9 @@ public class Client {
             System.out.println(e);
             throw new RuntimeException(e);
         }
+    }
 
+    public void setStop(boolean stop) {
+        this.stop = stop;
     }
 }

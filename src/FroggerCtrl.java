@@ -38,7 +38,7 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 	private static final int  WATER_HIGHER_BOUND = 1200;
 	private static final int  PRIZE_BLINK_THRESHOLD = 40;
 	private static final int  SLIDING_FRAMES = 5;
-	private static final int  NPC_RESET_X = 5;
+	private static final int  NPC_RESET_X = 1020;
 
 	public PnlFrog getFrogView()
 	{
@@ -167,6 +167,7 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 			{
 				if (client.getServerView().getState() == PnlFrog.STATE.GAME_OVER)
 				{
+					//client.setStop(true);
 					frogView.setState(PnlFrog.STATE.GAME_OVER_MULTI);
 					frogView.repaint();
 					client.getServerView().repaint();
@@ -504,25 +505,37 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 	@Override
 	public void mousePressed(MouseEvent e)
 	{
-		if (frogView.getState() == PnlFrog.STATE.MENU) {
-			if (frogView.getPlayButton().contains(e.getX() / frogView.getScale(), e.getY() / (frogView.getScale()) - 1500)) //single player
-			{
-				frogView.setState(PnlFrog.STATE.GAME);
-				frogView.repaint();
-				timer.start();
-			}
-			if (frogView.getMultiButton().contains(e.getX() / frogView.getScale(), e.getY() / (frogView.getScale()) - 1500))//2 giocatori
-			{
-				frogView.setState(PnlFrog.STATE.GAME);
-				multiplayer = true;
-				frogView.repaint();
-				client.connessione();
-				timer.start();
-			}
-			if (frogView.getQuitButton().contains(e.getX() / frogView.getScale(), e.getY() / (frogView.getScale()) - 1500)) //buttone quit
-				System.exit(0);
+		switch (frogView.getState())
+		{
+			case MENU:
+				if (frogView.getPlayButton().contains(e.getX() / frogView.getScale(), e.getY() / (frogView.getScale()) - 1500)) //single player
+				{
+					frogView.setState(PnlFrog.STATE.GAME);
+					frogView.repaint();
+					timer.start();
+				}
+				if (frogView.getMultiButton().contains(e.getX() / frogView.getScale(), e.getY() / (frogView.getScale()) - 1500))//2 giocatori
+				{
+					frogView.setState(PnlFrog.STATE.GAME);
+					multiplayer = true;
+					frogView.repaint();
+					client.connessione();
+					timer.start();
+				}
+				if (frogView.getQuitButton().contains(e.getX() / frogView.getScale(), e.getY() / (frogView.getScale()) - 1500)) //buttone quit
+					System.exit(0);
+				break;
+			case GAME_OVER_MULTI:
+			case GAME_OVER:
+				if (frogView.getQuitButtonMulti().contains(e.getX() / frogView.getScale(), e.getY() / (frogView.getScale()) - 1500))
+				{
+					client.setStop(true);
+					System.exit(0);
+				}
+				break;
 		}
 	}
+
 
 
 	/**
