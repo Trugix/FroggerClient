@@ -168,7 +168,6 @@ public class FroggerCtrl implements KeyListener, MouseListener    //clase contro
 			{
 				if (client.getServerView().getState() == PnlFrog.STATE.GAME_OVER)
 				{
-					//client.setStop(true);
 					frogView.setState(PnlFrog.STATE.GAME_OVER_MULTI);
 					frogView.repaint();
 					client.getServerView().repaint();

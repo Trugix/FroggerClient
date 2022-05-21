@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="Client final 1.1">
+    <list default="true" id="35663f7e-d8a1-4e63-8658-c8ecfd80f9eb" name="Changes" comment="Client final 1.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FroggerCtrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FroggerCtrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PnlFrog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PnlFrog.java" afterDir="false" />
     </list>
     <list id="dc967c36-5138-4e8e-8dec-ca774b4195c5" name="Changes by Edoardo" comment="Changes by Edoardo" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +39,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/ElaboratoGruppo33&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
@@ -72,7 +71,11 @@
       <workItem from="1652476650182" duration="109000" />
       <workItem from="1652688891720" duration="18900000" />
       <workItem from="1652788917229" duration="8795000" />
-      <workItem from="1652860761958" duration="4557000" />
+      <workItem from="1652860761958" duration="5266000" />
+      <workItem from="1652954498774" duration="171000" />
+      <workItem from="1653048025484" duration="84000" />
+      <workItem from="1653048549749" duration="43000" />
+      <workItem from="1653134930254" duration="1609000" />
     </task>
     <task id="LOCAL-00001" summary="first client">
       <created>1652263118856</created>
@@ -186,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652864937444</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Client final 1.2">
+      <created>1652865578099</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1652865578099</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +236,8 @@
     <MESSAGE value="Client final 0.6" />
     <MESSAGE value="Client final 1.0" />
     <MESSAGE value="Client final 1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Client final 1.1" />
+    <MESSAGE value="Client final 1.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client final 1.2" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
